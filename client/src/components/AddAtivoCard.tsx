@@ -46,8 +46,8 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
             tipo: { value: string };
           };
           const nome = target?.nome.value;
-          const posicao = target?.posicao.value;
-          const meta = target?.meta.value;
+          const posicao = Number(target?.posicao.value);
+          const meta = Number(target?.meta.value);
           const tipo = target?.tipo.value;
           if (!nome || !posicao || !meta || !tipo) {
             return;
