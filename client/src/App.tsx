@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import { Ativos } from "./components/Ativos";
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0);
 
   return (
     <>
@@ -16,8 +16,24 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
+      <h1>Onde Investir</h1>
+      <p>
+        {" "}
+        Este pequeno projeto foi desenhado para pessoas que desejam investir em
+        renda variável. Ele funciona como uma sugestão da onde alguém deveria
+        aportar.
+      </p>
+      <ul>
+        <li>
+          {" "}
+          Primeiro coloque seus ativos, com posição atual e meta final (essa
+          meta é em relação aos ativos de mesmo tipo)
+        </li>
+        <li> Depois coloque seu aporte</li>
+        <li> Clique em calcular e bons investimentos!</li>
+      </ul>
+      <Ativos />
+      {/* <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
@@ -27,9 +43,9 @@ function App() {
       </div>
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
-      </p>
+      </p> */}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
