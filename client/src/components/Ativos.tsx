@@ -1,5 +1,5 @@
 import { useAtivos } from "../hooks/useAtivos";
-import { AddAtivo } from "./AddAtivo";
+import { AddAtivoCard } from "./AddAtivoCard";
 import { AtivoCard } from "./AtivoCard";
 
 export const Ativos = () => {
@@ -7,7 +7,7 @@ export const Ativos = () => {
 
   return (
     <>
-      <AddAtivo onSubmit={addAtivos} />
+      <AddAtivoCard onSubmit={addAtivos} />
       {ativos.length ? (
         <div>
           <h1>Ativos</h1>
