@@ -33,3 +33,6 @@ export const Select = styled.select`
 `;
 
 export const Button = styled.button``;
+export const DangerButton = styled.button`
+  background-color: #8b0000;
+`;
