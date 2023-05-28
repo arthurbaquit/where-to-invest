@@ -6,9 +6,14 @@ import React from "react";
 import { Input } from "./UI/styles";
 
 export const Ativos = () => {
-  const { ativos, addAtivos } = useAtivos();
+  const { ativos, addAtivos, removeAtivos } = useAtivos();
   const [totalAmount, setTotalAmount] = React.useState(0);
   const totalPosition = ativos.reduce((acc, ativo) => acc + ativo.posicao, 0);
+  const onHandleTotalAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const insertValue = Number(e.target.value);
+    if (insertValue < 0) return;
+    setTotalAmount(Number(e.target.value));
+  };
   return (
     <>
       <h1>Aporte do Mês</h1>
@@ -19,7 +24,8 @@ export const Ativos = () => {
         </p>
         <Input
           type="number"
-          onChange={(e) => setTotalAmount(Number(e.target.value))}
+          onChange={onHandleTotalAmount}
+          value={totalAmount !== 0 ? totalAmount : ""}
         />
       </div>
       <AddAtivoCard onSubmit={addAtivos} />
@@ -27,7 +33,7 @@ export const Ativos = () => {
         <div>
           <h1>Ativos</h1>
           {GetWhereToInvest(ativos, totalAmount, totalPosition).map((ativo) => (
-            <AtivoCard ativo={ativo} />
+            <AtivoCard key={ativo.nome} ativo={ativo} onRemove={removeAtivos} />
           ))}
         </div>
       ) : null}
