@@ -26,8 +26,8 @@ function App() {
       <ul>
         <li>
           {" "}
-          Primeiro coloque seus ativos, com posição atual e meta final (essa
-          meta é em relação aos ativos de mesmo tipo)
+          Primeiro coloque seus ativos, com posição atual e meta final (em
+          relação a todos os ativos listados)
         </li>
         <li> Depois coloque seu aporte</li>
         <li> Clique em calcular e bons investimentos!</li>
