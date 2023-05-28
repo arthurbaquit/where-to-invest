@@ -1,13 +1,5 @@
 import { AtivosWithInvestAmount } from "../helpers/GetWhereToInvest";
-import styled from "styled-components";
-
-const Card = styled.div`
-  background-color: #fff;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
-`;
+import { Card } from "./UI/styles";
 
 type AtivoCardProps = {
   ativo: AtivosWithInvestAmount;

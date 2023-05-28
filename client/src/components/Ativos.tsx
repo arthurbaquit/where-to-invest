@@ -3,16 +3,7 @@ import { AddAtivoCard } from "./AddAtivoCard";
 import { AtivoCard } from "./AtivoCard";
 import { GetWhereToInvest } from "../helpers/GetWhereToInvest";
 import React from "react";
-import styled from "styled-components";
-
-const Input = styled.input`
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  margin-bottom: 1rem;
-  margin-left: 0.5rem;
-  width: 100;
-`;
+import { Input } from "./UI/styles";
 
 export const Ativos = () => {
   const { ativos, addAtivos } = useAtivos();
