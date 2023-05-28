@@ -1,4 +1,4 @@
-import { Ativo } from "../hooks/useAtivos";
+import { AtivosWithInvestAmount } from "../helpers/GetWhereToInvest";
 import styled from "styled-components";
 
 const Card = styled.div`
@@ -10,14 +10,14 @@ const Card = styled.div`
 `;
 
 type AtivoCardProps = {
-  ativo: Ativo;
+  ativo: AtivosWithInvestAmount;
 };
 export const AtivoCard = ({ ativo }: AtivoCardProps) => {
   return (
     <Card>
       <p>
-        Ativo: {ativo.nome} - Posição: {ativo.posicao} - Meta: {ativo.meta} -
-        Tipo: {ativo.tipo}
+        Ativo: {ativo.nome} - Posição: {ativo.posicao} - Meta: {ativo.meta}% -
+        Tipo: {ativo.tipo} - Aporte: {ativo.investAmount.toFixed(2)}
       </p>
     </Card>
   );
