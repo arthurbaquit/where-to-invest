@@ -14,19 +14,33 @@ export const useAtivos = () => {
     return ativos;
   }, []);
 
-  const addAtivos = useCallback((ativo: Ativo) => {
-    setAtivos((prevAtivos) => [
-      ...prevAtivos,
-      {
-        nome: ativo.nome,
-        tipo: ativo.tipo,
-        posicao: ativo.posicao,
-        meta: ativo.meta,
-      },
-    ]);
-  }, []);
+  const addAtivos = useCallback(
+    (ativo: Ativo) => {
+      if (ativos.find((a) => a.nome === ativo.nome)) {
+        return;
+      }
+      setAtivos((prevAtivos) => [
+        ...prevAtivos,
+        {
+          nome: ativo.nome,
+          tipo: ativo.tipo,
+          posicao: ativo.posicao,
+          meta: ativo.meta,
+        },
+      ]);
+    },
+    [ativos]
+  );
+
+  const removeAtivos = useCallback(
+    (ativo: Ativo) => {
+      setAtivos(ativos.filter((a) => a.nome !== ativo.nome));
+    },
+    [ativos]
+  );
+
   useEffect(() => {
     fetch();
   }, [fetch]);
-  return { ativos, addAtivos, fetch };
+  return { ativos, addAtivos, removeAtivos, fetch };
 };
