@@ -2,16 +2,15 @@ package repositories
 
 import (
 	. "github.com/arthurbaquit/where-to-invest/models"
-	"github.com/gofrs/uuid"
 	"gorm.io/gorm"
 )
 
 type IAtivosRepository interface {
 	GetAll() ([]Ativos, error)
-	GetByID(id uuid.UUID) error
+	GetByID(id string) error
 	Create(ativo *Ativos) error
 	Update(ativo *Ativos) error
-	Delete(id uuid.UUID) error
+	Delete(id string) error
 }
 
 type AtivosRepository struct {
@@ -30,7 +29,7 @@ func (r AtivosRepository) GetAll() ([]Ativos, error) {
 	return ativos, err
 }
 
-func (r AtivosRepository) GetByID(id uuid.UUID) error {
+func (r AtivosRepository) GetByID(id string) error {
 	var ativo Ativos
 	return r.DB.First(&ativo, id).Error
 }
@@ -43,6 +42,6 @@ func (r AtivosRepository) Update(ativo *Ativos) error {
 	return r.DB.Save(&ativo).Error
 }
 
-func (r AtivosRepository) Delete(id uuid.UUID) error {
-	return r.DB.Delete(&Ativos{}, id).Error
+func (r AtivosRepository) Delete(id string) error {
+	return r.DB.Where("id = ?", id).Delete(&Ativos{}).Error
 }
