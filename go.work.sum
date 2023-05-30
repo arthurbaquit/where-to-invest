@@ -1,3 +1,6 @@
 github.com/jackc/chunkreader v1.0.0 h1:4s39bBR8ByfqH+DKm8rQA3E1LHZWB9XWcrz8fqaZbe0=
 github.com/jackc/pgproto3 v1.1.0 h1:FYYE4yRw+AgI8wXIinMlNjBbp/UitDJwfj5LqqewP1A=
-gorm.io/driver/sqlite v1.3.1 h1:bwfE+zTEWklBYoEodIOIBwuWHpnx52Z9zJFW5F33WLk=
+github.com/mattn/go-sqlite3 v1.14.12/go.mod h1:NyWgC/yNuGj7Q9rpYnZvas74GogHl5/Z4A/KQRfk6bU=
+gorm.io/driver/sqlite v1.3.6 h1:Fi8xNYCUplOqWiPa3/GuCeowRNBRGTf62DEmhMDHeQQ=
+gorm.io/driver/sqlite v1.3.6/go.mod h1:Sg1/pvnKtbQ7jLXxfZa+jSHvoX8hoZA8cn4xllOMTgE=
+gorm.io/gorm v1.23.4/go.mod h1:l2lP/RyAtc1ynaTjFksBde/O8v9oOGIApu2/xRitmZk=
