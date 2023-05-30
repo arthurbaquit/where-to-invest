@@ -1,5 +1,5 @@
 import { AtivosWithInvestAmount } from "../helpers/GetWhereToInvest";
-import { Button, Card, DangerButton } from "./UI/styles";
+import { Card, DangerButton } from "./UI/styles";
 
 type AtivoCardProps = {
   ativo: AtivosWithInvestAmount;
