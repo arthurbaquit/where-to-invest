@@ -6,12 +6,12 @@ import (
 )
 
 type Ativos struct {
-	ID         uuid.UUID      `gorm:"primaryKey;autoIncrement;not null" json:"id"`
+	ID         uuid.UUID      `gorm:"primaryKey;not null" json:"id"`
 	Deleted_at gorm.DeletedAt `gorm:"type:timestamp;null" json:"deleted_at"`
 	Nome       string         `gorm:"type:varchar(255);not null" json:"nome"`
-	Valor      string         `gorm:"type:varchar(255);not null" json:"valor"`
+	Posicao    int64          `gorm:"type:integer;not null" json:"posicao"`
 	Tipo       string         `gorm:"type:varchar(255);not null" json:"tipo"`
-	Quantidade int64          `gorm:"type:integer;not null" json:"quantidade"`
+	Meta       int64          `gorm:"type:integer;not null" json:"meta"`
 }
 
 func (a *Ativos) TableName() string {

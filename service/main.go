@@ -11,6 +11,19 @@ import (
 	"github.com/joho/godotenv"
 )
 
+func EnableCORSMiddleware() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Headers", "*")
+		c.Header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE")
+
+		if c.Request.Method == "OPTIONS" {
+			c.AbortWithStatus(204)
+			return
+		}
+		c.Next()
+	}
+}
 func main() {
 	err := godotenv.Load()
 	if err != nil {
@@ -23,7 +36,7 @@ func main() {
 	}
 
 	r := gin.Default()
-
+	r.Use(EnableCORSMiddleware())
 	db.StartDB()
 	db := db.GetDatabase()
 	repo := repositories.NewRepository(db)

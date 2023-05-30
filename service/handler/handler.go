@@ -24,6 +24,7 @@ func ApiHandler(c *Config) {
 	{
 		group.GET("/", handler.GetAll)
 		group.POST("/save", handler.SaveAtivo)
+		group.DELETE("/delete/:id", handler.DeleteAtivo)
 	}
 }
 
@@ -50,4 +51,14 @@ func (h *AtivosHandler) SaveAtivo(c *gin.Context) {
 		return
 	}
 	c.JSON(200, ativo)
+}
+
+func (h *AtivosHandler) DeleteAtivo(c *gin.Context) {
+	id := c.Param("id")
+	err := h.ativosRepo.Delete(id)
+	if err != nil {
+		c.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(200, gin.H{"message": "Ativo deleted"})
 }

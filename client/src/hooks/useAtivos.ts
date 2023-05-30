@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+
 export type Ativo = {
+  id?: string;
   nome: string;
   tipo: string;
   posicao: number;
@@ -8,34 +11,44 @@ export type Ativo = {
 export const useAtivos = () => {
   const [ativos, setAtivos] = useState<Ativo[]>([]);
   const fetch = useCallback(async () => {
-    // const response = await fetch("http://localhost:3000/ativos");
-    // const data = await response.json();
-    // setAtivos(data);
-    return ativos;
+    try {
+      const response = await axios.get("http://localhost/api/ativos/");
+      setAtivos(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const addAtivos = useCallback(
-    (ativo: Ativo) => {
+    async (ativo: Ativo) => {
       if (ativos.find((a) => a.nome === ativo.nome)) {
         return;
       }
-      setAtivos((prevAtivos) => [
-        ...prevAtivos,
-        {
-          nome: ativo.nome,
-          tipo: ativo.tipo,
-          posicao: ativo.posicao,
-          meta: ativo.meta,
-        },
-      ]);
+      try {
+        const response = await axios.post(
+          "http://localhost/api/ativos/save",
+          ativo
+        );
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
     [ativos]
   );
 
   const removeAtivos = useCallback(
-    (ativo: Ativo) => {
-      setAtivos(ativos.filter((a) => a.nome !== ativo.nome));
+    async (ativo: Ativo) => {
+      try {
+        const response = await axios.delete(
+          `http://localhost/api/ativos/delete/${ativo.id}`
+        );
+        return response.data;
+      } catch (error) {
+        console.log(error);
+      }
     },
+
     [ativos]
   );
 
