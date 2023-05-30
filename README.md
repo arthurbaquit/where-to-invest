@@ -12,4 +12,4 @@ Caso deseje alguma feature específica, sinta-se a vontade para abrir uma issue.
 
 - [ ] Editar (e excluir) artigos inseridos
 - [ ] Separar por tipo de ativo
-- [ ] Persistência local
+- [x] Persistência local
