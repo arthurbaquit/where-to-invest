@@ -23,6 +23,7 @@ func ApiHandler(c *Config) {
 	group := c.R.Group("/api/ativos")
 	{
 		group.GET("/", handler.GetAll)
+		group.GET("/:filter", handler.GetByType)
 		group.POST("/save", handler.SaveAtivo)
 		group.DELETE("/delete/:id", handler.DeleteAtivo)
 	}
@@ -30,6 +31,16 @@ func ApiHandler(c *Config) {
 
 func (h *AtivosHandler) GetAll(c *gin.Context) {
 	ativos, err := h.ativosRepo.GetAll()
+	if err != nil {
+		c.JSON(500, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(200, ativos)
+}
+
+func (h *AtivosHandler) GetByType(c *gin.Context) {
+	filter := c.Param("filter")
+	ativos, err := h.ativosRepo.GetByType(filter)
 	if err != nil {
 		c.JSON(500, gin.H{"error": err.Error()})
 		return

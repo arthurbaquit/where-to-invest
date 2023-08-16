@@ -36,15 +36,25 @@ func beforeRun() {
 		Tipo:    "FII",
 		Meta:    20,
 	}
+	a3 := models.Ativos{
+		Nome:    "a3",
+		Posicao: 800,
+		Tipo:    "Stocks",
+		Meta:    20,
+	}
 	if err != nil {
 		fmt.Println(err)
 	}
 	repo = NewRepository(database)
-	err = repo.Update(&a1)
+	err = repo.Create(&a1)
 	if err != nil {
 		fmt.Println(err)
 	}
-	err = repo.Update(&a2)
+	err = repo.Create(&a2)
+	if err != nil {
+		fmt.Println(err)
+	}
+	err = repo.Create(&a3)
 	if err != nil {
 		fmt.Println(err)
 	}
@@ -68,16 +78,31 @@ func TestGetAll(t *testing.T) {
 	ativos, err := repo.GetAll()
 	fmt.Println(ativos, err)
 	assert.Nil(t, err)
-	assert.Equal(t, 2, len(ativos))
+	assert.Equal(t, 3, len(ativos))
 }
 
 func TestDelete(t *testing.T) {
 	beforeRun()
 	ativos, _ := repo.GetAll()
-	assert.Equal(t, 2, len(ativos))
+	assert.Equal(t, 3, len(ativos))
 	err := repo.Delete(ativos[0].ID.String())
 	assert.Nil(t, err)
 	ativos, err = repo.GetAll()
 	assert.Nil(t, err)
-	assert.Equal(t, 1, len(ativos))
+	assert.Equal(t, 2, len(ativos))
+}
+
+func TestGetByType(t *testing.T) {
+	beforeRun()
+	ativos, err := repo.GetByType("FII")
+	assert.Nil(t, err)
+	assert.Equal(t, 2, len(ativos))
+}
+
+func TestGetByID(t *testing.T) {
+	beforeRun()
+	ativos, _ := repo.GetAll()
+	ativo, err := repo.GetByID(ativos[0].ID.String())
+	assert.Nil(t, err)
+	assert.Equal(t, ativos[0].ID.String(), ativo.ID.String())
 }

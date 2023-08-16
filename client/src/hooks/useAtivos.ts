@@ -1,5 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
+const API = axios.create({
+  baseURL: "http://localhost/api/ativos/",
+});
 
 export type Ativo = {
   id?: string;
@@ -12,12 +15,24 @@ export const useAtivos = () => {
   const [ativos, setAtivos] = useState<Ativo[]>([]);
   const fetch = useCallback(async () => {
     try {
-      const response = await axios.get("http://localhost/api/ativos/");
+      const response = await API.get("");
       setAtivos(response.data);
     } catch (error) {
       console.log(error);
     }
   }, []);
+
+  const fetchFilter = useCallback(
+    async (tipo: string) => {
+      try {
+        const response = await API.get(`/${tipo}`);
+        setAtivos(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    [ativos]
+  );
 
   const addAtivos = useCallback(
     async (ativo: Ativo) => {
@@ -25,10 +40,7 @@ export const useAtivos = () => {
         return;
       }
       try {
-        const response = await axios.post(
-          "http://localhost/api/ativos/save",
-          ativo
-        );
+        const response = await API.post("save", ativo);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -40,9 +52,7 @@ export const useAtivos = () => {
   const removeAtivos = useCallback(
     async (ativo: Ativo) => {
       try {
-        const response = await axios.delete(
-          `http://localhost/api/ativos/delete/${ativo.id}`
-        );
+        const response = await API.delete(`/delete/${ativo.id}`);
         return response.data;
       } catch (error) {
         console.log(error);
@@ -55,5 +65,5 @@ export const useAtivos = () => {
   useEffect(() => {
     fetch();
   }, [fetch]);
-  return { ativos, addAtivos, removeAtivos, fetch };
+  return { ativos, addAtivos, removeAtivos, fetch, fetchFilter };
 };
