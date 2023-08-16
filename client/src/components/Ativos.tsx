@@ -4,9 +4,10 @@ import { AtivoCard } from "./AtivoCard";
 import { GetWhereToInvest } from "../helpers/GetWhereToInvest";
 import React from "react";
 import { Input } from "./UI/styles";
+import styles from "./Ativos.module.scss";
 
 export const Ativos = () => {
-  const { ativos, addAtivos, removeAtivos, fetch } = useAtivos();
+  const { ativos, addAtivos, removeAtivos, fetch, fetchFilter } = useAtivos();
   const [totalAmount, setTotalAmount] = React.useState(0);
   const totalPosition = ativos.reduce((acc, ativo) => acc + ativo.posicao, 0);
   const onHandleTotalAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,11 +15,11 @@ export const Ativos = () => {
     if (insertValue < 0) return;
     setTotalAmount(Number(e.target.value));
   };
-  const onSaveHandler = async (ativo: Ativo) => {
-    await addAtivos(ativo).then(() => fetch());
+  const SaveHandler = async (ativo: Ativo) => {
+    await addAtivos(ativo).then(() => fetchFilter("FII"));
   };
 
-  const onRemoveHandler = async (ativo: Ativo) => {
+  const RemoveHandler = async (ativo: Ativo) => {
     await removeAtivos(ativo).then(() => fetch());
   };
   return (
@@ -35,19 +36,39 @@ export const Ativos = () => {
           value={totalAmount !== 0 ? totalAmount : ""}
         />
       </div>
-      <AddAtivoCard onSubmit={onSaveHandler} />
-      {ativos.length ? (
+      <AddAtivoCard onSubmit={SaveHandler} />
+      <div className={styles.Header}>
+        <h1>Ativos</h1>
+        <label>
+          Filtro
+          <select
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              fetchFilter(e.target.value)
+            }
+          >
+            <option value="FII">FII</option>
+            <option value="Ação">Ação</option>
+            <option value="ETF">ETF</option>
+            <option value="Stock">Stock</option>
+          </select>
+        </label>
+      </div>
+
+      {ativos.length > 0 && (
         <div>
-          <h1>Ativos</h1>
-          {GetWhereToInvest(ativos, totalAmount, totalPosition).map((ativo) => (
-            <AtivoCard
-              key={ativo.nome}
-              ativo={ativo}
-              onRemove={onRemoveHandler}
-            />
-          ))}
+          <div className={styles.AtivosTable}>
+            {GetWhereToInvest(ativos, totalAmount, totalPosition).map(
+              (ativo) => (
+                <AtivoCard
+                  key={ativo.id || ativo.nome}
+                  ativo={ativo}
+                  onRemove={RemoveHandler}
+                />
+              )
+            )}
+          </div>
         </div>
-      ) : null}
+      )}
     </>
   );
 };
