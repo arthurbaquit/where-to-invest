@@ -1,0 +1,52 @@
+.AtivosTable {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.Header {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 1rem;
+  justify-content: center;
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  label {
+    position: absolute;
+    right: 0;
+    select {
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.25rem;
+      margin-left: 0.5rem;
+      width: 100;
+    }
+  }
+}
+.AtivoCard {
+  @media (prefers-color-scheme: dark) {
+    box-shadow: 0 0 0.5rem rgba(255, 255, 255, 0.1);
+  }
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.1);
+  ul {
+    li {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+  }
+  .DangerButton {
+    background: #8b0000;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    &:hover {
+      background-color: darken(#8b0000, 10%);
+    }
+  }
+}

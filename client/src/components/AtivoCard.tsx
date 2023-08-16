@@ -1,6 +1,5 @@
 import { AtivosWithInvestAmount } from "../helpers/GetWhereToInvest";
-import { Card, DangerButton } from "./UI/styles";
-
+import styles from "./Ativos.module.scss";
 type AtivoCardProps = {
   ativo: AtivosWithInvestAmount;
   onRemove: (ativo: AtivosWithInvestAmount) => void;
@@ -11,12 +10,17 @@ export const AtivoCard = ({ ativo, onRemove }: AtivoCardProps) => {
   };
 
   return (
-    <Card style={{ display: "flex", justifyContent: "space-between" }}>
-      <p>
-        Ativo: {ativo.nome} - Posição: {ativo.posicao} - Meta: {ativo.meta}% -
-        Tipo: {ativo.tipo} - Aporte: {ativo.investAmount.toFixed(2)}
-      </p>
-      <DangerButton onClick={onHandleClick}> Apagar ativo</DangerButton>
-    </Card>
+    <div className={styles.AtivoCard}>
+      <ul>
+        <li>Nome: {ativo.nome}</li>
+        <li>Posição: {ativo.posicao}</li>
+        <li>Meta: {ativo.meta}% </li>
+        <li>Tipo: {ativo.tipo} </li>
+        <li> Aporte: {ativo.investAmount.toFixed(2)}</li>
+      </ul>
+      <button className={styles.DangerButton} onClick={onHandleClick}>
+        Apagar ativo
+      </button>
+    </div>
   );
 };
