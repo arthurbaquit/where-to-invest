@@ -19,8 +19,10 @@ Caso deseje alguma feature específica, sinta-se a vontade para abrir uma issue.
 
 ### P1
 
+- [x] Trocar meta do ativo por notas
 - [ ] Adicionar metas por tipo de ativo
-- [ ] Trocar meta do ativo por notas
+- [ ] Ajustar a distribuição do aporte por metas
+- [ ] Ajustar a distribuição do aporte pelas notas
 
 ### P2
 

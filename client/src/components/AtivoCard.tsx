@@ -14,7 +14,7 @@ export const AtivoCard = ({ ativo, onRemove }: AtivoCardProps) => {
       <ul>
         <li>Nome: {ativo.nome}</li>
         <li>Posição: {ativo.posicao}</li>
-        <li>Meta: {ativo.meta}% </li>
+        <li>Nota: {ativo.nota}% </li>
         <li>Tipo: {ativo.tipo} </li>
         <li> Aporte: {ativo.investAmount.toFixed(2)}</li>
       </ul>

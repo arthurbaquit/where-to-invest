@@ -22,7 +22,7 @@ export const GetWhereToInvest = (
   const ativosWithInvestAmount: AtivosWithInvestAmount[] = ativos.map(
     (ativo) => {
       const investAmount = getInvestAmount(
-        ativo.meta,
+        ativo.nota,
         totalPosition,
         totalAmount,
         ativo.posicao

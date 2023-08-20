@@ -11,7 +11,7 @@ type Ativos struct {
 	Nome       string         `gorm:"type:varchar(255);not null" json:"nome"`
 	Posicao    int64          `gorm:"type:integer;not null" json:"posicao"`
 	Tipo       string         `gorm:"type:varchar(255);not null" json:"tipo"`
-	Meta       int64          `gorm:"type:integer;not null" json:"meta"`
+	Nota       int64          `gorm:"type:integer;not null" json:"nota"`
 }
 
 func (a *Ativos) TableName() string {

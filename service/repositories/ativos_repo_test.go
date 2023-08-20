@@ -28,19 +28,19 @@ func beforeRun() {
 		Nome:    "a1",
 		Posicao: 10,
 		Tipo:    "FII",
-		Meta:    10,
+		Nota:    10,
 	}
 	a2 := models.Ativos{
 		Nome:    "a2",
 		Posicao: 80,
 		Tipo:    "FII",
-		Meta:    20,
+		Nota:    20,
 	}
 	a3 := models.Ativos{
 		Nome:    "a3",
 		Posicao: 800,
 		Tipo:    "Stocks",
-		Meta:    20,
+		Nota:    20,
 	}
 	if err != nil {
 		fmt.Println(err)
@@ -67,7 +67,7 @@ func TestUpdate(t *testing.T) {
 		Nome:    "a3",
 		Posicao: 10,
 		Tipo:    "FII",
-		Meta:    10,
+		Nota:    10,
 	}
 	err := repo.Update(&ativo)
 	assert.Nil(t, err)

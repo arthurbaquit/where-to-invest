@@ -14,11 +14,7 @@ function App() {
         aportar.
       </p>
       <ul>
-        <li>
-          {" "}
-          Primeiro coloque seus ativos, com posição atual e meta final (em
-          relação a todos os ativos listados)
-        </li>
+        <li> Primeiro coloque seus ativos, com posição atual e nota</li>
         <li> Depois coloque seu aporte</li>
         <li> Clique em calcular e bons investimentos!</li>
       </ul>

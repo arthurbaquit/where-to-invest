@@ -14,17 +14,17 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
           const target = e.target as typeof e.target & {
             nome: { value: string };
             posicao: { value: number };
-            meta: { value: number };
+            nota: { value: number };
             tipo: { value: string };
           };
           const nome = target?.nome.value;
           const posicao = Number(target?.posicao.value);
-          const meta = Number(target?.meta.value);
+          const nota = Number(target?.nota.value);
           const tipo = target?.tipo.value;
-          if (!nome || !posicao || !meta || !tipo) {
+          if (!nome || !posicao || !nota || !tipo) {
             return;
           }
-          onSubmit({ nome, posicao, meta, tipo });
+          onSubmit({ nome, posicao, nota, tipo });
         }}
       >
         <Label htmlFor="nome">
@@ -44,15 +44,9 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
             <option value="Stock">Stock</option>
           </Select>
         </Label>
-        <Label htmlFor="meta">
-          Meta em Porcentagem
-          <Input
-            type="text"
-            name="meta"
-            id="meta"
-            step="0.01"
-            placeholder="25"
-          />
+        <Label htmlFor="nota">
+          Nota
+          <Input type="text" name="nota" id="nota" step="1" placeholder="25" />
         </Label>
         <Button type="submit">Adicionar</Button>
       </form>

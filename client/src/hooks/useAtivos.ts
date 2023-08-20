@@ -9,7 +9,7 @@ export type Ativo = {
   nome: string;
   tipo: string;
   posicao: number;
-  meta: number;
+  nota: number;
 };
 export const useAtivos = () => {
   const [ativos, setAtivos] = useState<Ativo[]>([]);
