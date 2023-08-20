@@ -57,16 +57,28 @@ export const DoughnutChart = () => {
         ctx,
         chartArea: { left, top, width, height },
       } = chart;
-      const ativosTotalValue = chart.config.data.datasets[0].data.reduce(
-        (acc, d) => {
-          if (typeof acc === "number" && typeof d === "number" && !isNaN(d)) {
-            acc += d;
-          }
-          return acc;
-        },
-        0
-      );
-
+      const getNotHiddenLegend = chart.legend?.legendItems
+        ?.filter((item) => !item.hidden)
+        .map((item) => item.text);
+      // create a dict with labels and values
+      const dict = chart.config.data.datasets[0].data.map((d, i) => {
+        return {
+          label: chart.config.data.labels ? chart.config.data.labels[i] : "",
+          value: d,
+        };
+      });
+      //get the total value where the legend is not hidden
+      const ativosTotalValue = getNotHiddenLegend?.reduce((acc, label) => {
+        const value = dict.find((d) => d.label === label)?.value;
+        if (
+          typeof acc === "number" &&
+          typeof value === "number" &&
+          !isNaN(value)
+        ) {
+          acc += value;
+        }
+        return acc;
+      }, 0);
       ctx.save();
       ctx.font = "bolder 20px Arial";
       ctx.fillStyle = "black";
@@ -105,20 +117,6 @@ export const DoughnutChart = () => {
         width={300}
         height={300}
       />
-      <div
-        style={{
-          position: "absolute",
-          width: "100%",
-          top: "50%",
-          left: 0,
-          textAlign: "center",
-          lineHeight: "20px",
-          fontSize: "20px",
-          fontWeight: "bolder",
-        }}
-      >
-        <span></span>
-      </div>
     </div>
   );
 };
