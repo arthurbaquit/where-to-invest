@@ -5,7 +5,6 @@ import { DoughnutChart } from "./components/UI/DoughnutChart";
 function App() {
   return (
     <>
-      <DoughnutChart />
       <h1>Onde Investir</h1>
       <p>
         {" "}
@@ -18,6 +17,8 @@ function App() {
         <li> Depois coloque seu aporte</li>
         <li> Clique em calcular e bons investimentos!</li>
       </ul>
+      <h1>Posição Atual</h1>
+      <DoughnutChart />
       <Ativos />
     </>
   );

@@ -39,14 +39,16 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
           Tipo
           <Select name="tipo" id="tipo">
             <option value="FII">FII</option>
-            <option value="Ação">Ação</option>
-            <option value="ETF">ETF</option>
-            <option value="Stock">Stock</option>
+            <option value="NationalStocks">Ação Nacional</option>
+            <option value="ForeignStocks">Ação Internacional</option>
+            <option value="FixedIncome">Renda Fixa</option>
+            <option value="Reits">REITs</option>
+            <option value="Crypto">Criptomoedas</option>
           </Select>
         </Label>
         <Label htmlFor="nota">
           Nota
-          <Input type="text" name="nota" id="nota" step="1" placeholder="25" />
+          <Input type="text" name="nota" id="nota" step="1" placeholder="1" />
         </Label>
         <Button type="submit">Adicionar</Button>
       </form>

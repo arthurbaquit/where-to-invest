@@ -52,9 +52,11 @@ export const Ativos = () => {
           >
             <option value="Todos">Todos</option>
             <option value="FII">FII</option>
-            <option value="Ação">Ação</option>
-            <option value="ETF">ETF</option>
-            <option value="Stock">Stock</option>
+            <option value="NationalStocks">Ação Nacional</option>
+            <option value="ForeignStocks">Ação Internacional</option>
+            <option value="FixedIncome">Renda Fixa</option>
+            <option value="Reits">REITs</option>
+            <option value="Crypto">Criptomoedas</option>
           </select>
         </label>
       </div>

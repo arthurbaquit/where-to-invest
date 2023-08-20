@@ -35,7 +35,7 @@ export const DoughnutChart = () => {
       "rgba(153, 102, 255)",
       "rgba(255, 159, 64)",
     ];
-    const borderColor = ["white", "white", "white", "white", "white"];
+    const borderColor = ["white", "white", "white", "white", "white", "white"];
     const borderWidth = 1;
     return {
       labels,
@@ -81,7 +81,7 @@ export const DoughnutChart = () => {
       }, 0);
       ctx.save();
       ctx.font = "bolder 20px Arial";
-      ctx.fillStyle = "black";
+      ctx.fillStyle = "white";
       ctx.textAlign = "center";
       ctx.fillText(
         `R$${
@@ -109,7 +109,7 @@ export const DoughnutChart = () => {
                 font: {
                   size: 14,
                 },
-                color: "black",
+                color: "white",
               },
             },
           },
