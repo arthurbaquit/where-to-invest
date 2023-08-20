@@ -2,10 +2,9 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Ativos } from "./components/Ativos";
+import { DoughnutChart } from "./components/UI/DoughnutChart";
 
 function App() {
-  // const [count, setCount] = useState(0);
-
   return (
     <>
       <div>
@@ -16,6 +15,7 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+      <DoughnutChart />
       <h1>Onde Investir</h1>
       <p>
         {" "}
