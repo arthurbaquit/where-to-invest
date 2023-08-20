@@ -42,10 +42,15 @@ export const Ativos = () => {
         <label>
           Filtro
           <select
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              fetchFilter(e.target.value)
-            }
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
+              if (e.target.value === "Todos") {
+                fetch();
+                return;
+              }
+              fetchFilter(e.target.value);
+            }}
           >
+            <option value="Todos">Todos</option>
             <option value="FII">FII</option>
             <option value="Ação">Ação</option>
             <option value="ETF">ETF</option>
