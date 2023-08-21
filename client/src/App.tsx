@@ -1,6 +1,7 @@
 import "./App.css";
+import { AssetTable } from "./components/AssetTable";
 import { Ativos } from "./components/Ativos";
-import { DoughnutChart } from "./components/UI/DoughnutChart";
+import { DoughnutChart } from "./components/DoughnutChart";
 
 function App() {
   return (
@@ -18,7 +19,10 @@ function App() {
         <li> Clique em calcular e bons investimentos!</li>
       </ul>
       <h1>Posição Atual</h1>
-      <DoughnutChart />
+      <div style={{ display: "flex", height: "300px" }}>
+        <DoughnutChart />
+        <AssetTable />
+      </div>
       <Ativos />
     </>
   );

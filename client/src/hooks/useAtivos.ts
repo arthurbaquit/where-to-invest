@@ -10,6 +10,7 @@ export type Ativo = {
   tipo: string;
   posicao: number;
   nota: number;
+  quantidade: number;
 };
 export const useAtivos = () => {
   const [ativos, setAtivos] = useState<Ativo[]>([]);
@@ -67,3 +68,11 @@ export const useAtivos = () => {
   }, [fetch]);
   return { ativos, addAtivos, removeAtivos, fetch, fetchFilter };
 };
+
+export type AssetTypes =
+  | "NationalStocks"
+  | "ForeignStocks"
+  | "FIIs"
+  | "REITs"
+  | "Cryptos"
+  | "FixedIncome";

@@ -10,13 +10,13 @@ export const Ativos = () => {
   const { ativos, addAtivos, removeAtivos, fetch, fetchFilter } = useAtivos();
   const [totalAmount, setTotalAmount] = React.useState(0);
   const totalPosition = ativos.reduce((acc, ativo) => acc + ativo.posicao, 0);
-  const onHandleTotalAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTotalAmount = (e: React.ChangeEvent<HTMLInputElement>) => {
     const insertValue = Number(e.target.value);
     if (insertValue < 0) return;
     setTotalAmount(Number(e.target.value));
   };
-  const SaveHandler = async (ativo: Ativo) => {
-    await addAtivos(ativo).then(() => fetchFilter("FII"));
+  const handleSave = async (ativo: Ativo) => {
+    await addAtivos(ativo).then(() => fetch());
   };
 
   const RemoveHandler = async (ativo: Ativo) => {
@@ -32,11 +32,11 @@ export const Ativos = () => {
         </p>
         <Input
           type="number"
-          onChange={onHandleTotalAmount}
+          onChange={handleTotalAmount}
           value={totalAmount !== 0 ? totalAmount : ""}
         />
       </div>
-      <AddAtivoCard onSubmit={SaveHandler} />
+      <AddAtivoCard onSubmit={handleSave} />
       <div className={styles.Header}>
         <h1>Ativos</h1>
         <label>

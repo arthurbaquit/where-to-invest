@@ -1,8 +1,8 @@
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import styles from "./DoughnutChart.module.scss";
-import { useAtivos } from "../../../hooks/useAtivos";
+import { useAtivos } from "../../hooks/useAtivos";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export const DoughnutChart = () => {

@@ -64,10 +64,11 @@ func beforeRun() {
 func TestUpdate(t *testing.T) {
 	beforeRun()
 	ativo := models.Ativos{
-		Nome:    "a3",
-		Posicao: 10,
-		Tipo:    "FII",
-		Nota:    10,
+		Nome:       "a3",
+		Posicao:    10,
+		Quantidade: 10,
+		Tipo:       "FII",
+		Nota:       10,
 	}
 	err := repo.Update(&ativo)
 	assert.Nil(t, err)

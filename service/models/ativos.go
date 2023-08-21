@@ -10,6 +10,7 @@ type Ativos struct {
 	Deleted_at gorm.DeletedAt `gorm:"type:timestamp;null" json:"deleted_at"`
 	Nome       string         `gorm:"type:varchar(255);not null" json:"nome"`
 	Posicao    int64          `gorm:"type:integer;not null" json:"posicao"`
+	Quantidade int64          `gorm:"type:integer;not null" json:"quantidade"`
 	Tipo       string         `gorm:"type:varchar(255);not null" json:"tipo"`
 	Nota       int64          `gorm:"type:integer;not null" json:"nota"`
 }

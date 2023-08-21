@@ -14,6 +14,7 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
           const target = e.target as typeof e.target & {
             nome: { value: string };
             posicao: { value: number };
+            quantidade: { value: number };
             nota: { value: number };
             tipo: { value: string };
           };
@@ -21,10 +22,12 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
           const posicao = Number(target?.posicao.value);
           const nota = Number(target?.nota.value);
           const tipo = target?.tipo.value;
-          if (!nome || !posicao || !nota || !tipo) {
+          const quantidade = Number(target?.quantidade.value);
+          console.log(nome, posicao, nota, tipo, quantidade);
+          if (!nome || !posicao || !nota || !tipo || !quantidade) {
             return;
           }
-          onSubmit({ nome, posicao, nota, tipo });
+          onSubmit({ nome, posicao, nota, tipo, quantidade });
         }}
       >
         <Label htmlFor="nome">
@@ -34,6 +37,15 @@ export const AddAtivoCard = ({ onSubmit }: AddAtivoProps) => {
         <Label htmlFor="posicao">
           Posição Atual
           <Input type="number" name="posicao" id="posicao" placeholder="1000" />
+        </Label>
+        <Label htmlFor="quantidade">
+          Quantidade
+          <Input
+            type="number"
+            name="quantidade"
+            id="quantidade"
+            placeholder="1"
+          />
         </Label>
         <Label htmlFor="tipo">
           Tipo
